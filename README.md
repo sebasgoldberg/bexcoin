@@ -1,8 +1,8 @@
-# BEXCOIN (Blockchain Exchain Coin)
+# BEXCOIN (Blockchain Exchange Coin)
 
 ## Introducción
 
-BEXCOIN es una moneda con un objetivo bien especifico: Desentralizar el intercambio de criptomonedas de una forma desentralizada y segura.
+BEXCOIN es una moneda con un objetivo bien especifico: Realizar el intercambio de criptomonedas de una forma desentralizada y segura.
 
 Esta desentralización es lograda gracias al uso de la misma tecnologia utilizada por las criptomonedas: blockchain.
 
@@ -43,23 +43,31 @@ Siguiendo con el ejemplo anterior, P1, P2 o un tercero creará la transacción d
 2. C2MB --- XB MB ---> C1MB (P2 transfiere la cantidad XB de moneda MB a P1).
 * FLB: Fecha limite de realización de bloqueos.
 
-Con la creación de la transacción, es generado un *IDBEX* (este ID será utilizado más adelante para identificar que una transferencia hecha en alguna de las monedas implicadas forma parte de la transacción).
+Con la creación de la transacción, es generado un **IDBEX** (este ID será utilizado más adelante para identificar que una transferencia hecha en alguna de las monedas implicadas forma parte de la transacción).
 Por cada operación de transferencia es generado un índice de forma de poder identificar dicha transferencia dentro de la transacción.
 
 Simplemente la transacción será una descripción del intercambio a realizar.
 
-Hasta ahora no se ha echo ninguna transferencia efectiva, con lo cual es una transacción a confirmar, y la misma no forma parte de ningún bloque BEX.
+Hasta ahora no se ha echo ninguna transferencia efectiva, con lo cual es una transacción a confirmar.
+
+El resultado es el siguiente (transacción de intención de intercambio):
+
+|BLOQUE de BEX|
+|---|
+|C1MA --- XA MA ---> C2MA (IDBEX-1, FLB)|
+|C2MB --- XB MB ---> C1MB (IDBEX-2, FLB)|
+
 
 ### Bloqueo de Fondos
 
-La vuelta de tuerca indicada antes se deberá ver en la incorporación de un mecanismo de *bloqueo de fondos* en toda criptomoneda que quiera formar parte de la red de intercambio BEX.
+La vuelta de tuerca indicada antes se deberá ver en la incorporación de un mecanismo de **bloqueo de fondos** en toda criptomoneda que quiera formar parte de la red de intercambio BEX.
 
 Este bloqueo de fondos sería realizado por el propietario de la cuenta con las intenciones de hacer un intercambio.
 De esta forma dicho bloqueo de fondos pasaria a formar parte de del blockchain de la moneda bloqueda.
 
 En nuestro ejemplo:
-* C1MA bloquearia una cantidad XA de moneda MA con referencia a *IDBEX-1*.
-* C2MB bloquearia una cantidad XB de moneda MB con referencia a *IDBEX-2*.
+* C1MA bloquearia una cantidad XA de moneda MA con referencia a **IDBEX-1**.
+* C2MB bloquearia una cantidad XB de moneda MB con referencia a **IDBEX-2**.
 
 Ambos bloqueos en caso de ser válidos pasarían a ser parte del blockhain correspondiente a cada moneda.
 
@@ -68,12 +76,12 @@ Hasta ahora no se ha echo ninguna transferencia efectiva, simplemente fue realiz
 El resultado es el siguiente:
 
 |BLOQUE de MA|
----
-|C1MA bloquea XA con referencia a IDBEX-1|
+|---|
+|C1MA bloquea una cantidad XA de moneda MA con referencia a IDBEX-1|
 
 |BLOQUE de MB|
----
-|C2MB bloquea XB con referencia a IDBEX-2|
+|---|
+|C2MB bloquea una cantidad XB de moneda MB con referencia a IDBEX-2|
 
 
 ### Confirmando los bloqueos
@@ -88,10 +96,10 @@ Hasta ahora no se ha echo ninguna transferencia efectiva, simplemente:
 * Fueron bloqueados los fondos de las cuentas origen y adicionados a los respectivos blockchain.
 * Fue adicionada la transacción de intercambio al blockchain BEX.
 
-El resultado es el siguiente:
+El resultado es el siguiente (transacción de intercambio efectivo):
 
 |BLOQUE de BEX|
----
+|---|
 |C1MA --- XA MA ---> C2MA (IDBEX-1)|
 |C2MB --- XB MB ---> C1MB (IDBEX-2)|
 
@@ -104,24 +112,47 @@ Una vez confirmada una transacción de intercambio BEX, utilizando sus informaci
 El resultado es el siguiente:
 
 |BLOQUE de MA|
----
+|---|
 |C1MA --- XA MA ---> C2MA (IDBEX-1)|
 
 |BLOQUE de MB|
----
+|---|
 |C2MB --- XB MB ---> C1MB (IDBEX-2)|
 
-### Consideraciones de Fecha Limite
+### Consideraciones de Fecha Limite y Desbloqueos
 * La transacción de intercambio no podrá ser adicionada al blockchain BEX en una fecha posterior a la fecha limite FLV.
 * En caso de haber superado la fecha limite FLV y no haber sido adicionada la transacción de intercambio al bloque BEX, los involucrados podrán realizar una operación de desbloqueo de fondos en el blockchain de la moneda correspondiente.
 
 Si fuese realizada una operación de debloqueo, el resultado sería el siguiente:
 
 |BLOQUE de MA|
----
+|---|
 |C1MA desbloquea XA con referencia a IDBEX-1|
 
 |BLOQUE de MB|
+|---|
 ---
 |C2MB desbloquea XB con referencia a IDBEX-2|
 
+### Cantidad de Transferencias
+
+La cantidad de transferencias dentro de una transacción BEX no tiene por qué estar limitada a solo dos.
+
+El beneficio de un sistema de intercambio descentralizado es que permitiria realizar intercambios múltiples en una misma transacción.
+
+Por ejemplo:
+* 2 personas podrían hacer un intercambio involucrando 7 monedas distintas.
+* 10 personas podrían participar de un intercambio, utilizando 4 monedas distintas.
+* Otro tipo de situaciones donde la complejidad no tendría límites a los existentes hoy en ekl mercado del intercambio.
+
+### Mineración
+
+Obviamente, para poder mantener el blockchain BEX sería necesario mineración de forma que sean generados los bloques.
+
+En principio la recompensa por generación de bloques sería la emisión de moneda BEX para el que consiga generar el bloque.
+
+### Tasas Para Generación de Transacciones
+
+De forma que exista un compromiso por parte de los usuarios y que no creen transacciones de intensión de intercambio de forma indiscriminada, será cobrada una tasa a definir (en moneda BEX) por la creación de cada transacción.
+
+Esta tasa será utilizada para solventar la transacción de intención de intercambio y la transacción de intercambio efectivo.
