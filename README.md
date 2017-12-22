@@ -131,7 +131,6 @@ Si fuese realizada una operación de debloqueo, el resultado sería el siguiente
 
 |BLOQUE de MB|
 |---|
----
 |C2MB desbloquea XB con referencia a IDBEX-2|
 
 ### Cantidad de Transferencias
