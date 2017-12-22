@@ -142,7 +142,7 @@ El beneficio de un sistema de intercambio descentralizado es que permitiria real
 Por ejemplo:
 * 2 personas podrían hacer un intercambio involucrando 7 monedas distintas.
 * 10 personas podrían participar de un intercambio, utilizando 4 monedas distintas.
-* Otro tipo de situaciones donde la complejidad no tendría límites a los existentes hoy en ekl mercado del intercambio.
+* Otro tipo de situaciones donde la complejidad no tendría límites a los existentes hoy en el mercado del intercambio.
 
 ### Mineración
 
@@ -152,6 +152,25 @@ En principio la recompensa por generación de bloques sería la emisión de mone
 
 ### Tasas Para Generación de Transacciones
 
-De forma que exista un compromiso por parte de los usuarios y que no creen transacciones de intensión de intercambio de forma indiscriminada, será cobrada una tasa a definir (en moneda BEX) por la creación de cada transacción.
+De forma que exista un compromiso por parte de los usuarios y que no creen transacciones de intención de intercambio de forma indiscriminada, será cobrada una tasa a definir (en moneda BEX) por la creación de cada transacción.
 
 Esta tasa será utilizada para solventar la transacción de intención de intercambio y la transacción de intercambio efectivo.
+
+Las tasas en relación a bloqueos, transferencia y desbloqueos en las otras monedas, se deberian definir en la transacción de bloqueo.
+
+### Incepción
+
+El origen de BEX estimo que será de la siguiente forma:
+* Será necesario encontrar monedas interesadas en implementar el protocolo BEX.
+* Será iniciada la mineración de BEX para iniciar la emición de moneda.
+* Se comenzarán a realizar los primeros intercambios entre BEX y otras monedas que implementen el protocolo BEX (BEX implementará su propio protocolo también). Los poseedores de otras monedas tendrán interés en adquirir BEX, para poder realizar intercambios con otras monedas.
+* Las tasas de estos intercambios serán abonadas en principio por los poseedores de BEX.
+
+### Wallet
+
+En el Wallet BEX sería conveniente incorporar herramientas que permitan:
+* Crear transacciones de intención de intercambio (TII).
+* Bloquear fondos asociandolos a un determinado IDBEX-i.
+* Desbloquear fondos vencidos.
+* Realizar todas las operaciones de un wallet convencional.
+
